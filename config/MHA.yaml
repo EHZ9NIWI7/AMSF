@@ -1,0 +1,30 @@
+# Environment
+data_dir: ./data
+log_dir: ./log
+result_dir: ./result
+gpu: 0
+
+# Model
+skeleton_model: shift
+language_model: longclip-L # longclip-L, ViT-B/16, ViT-B/32
+latent_size: 0 # use the default value
+fusion_strategy:
+  module_name: MHA # Concat, Add, Weighted_Add, Linear, MLP, Conv, SA, MSCA, MHA, Former
+  num_layers: 1
+  num_heads: 8
+  ratio: 5 # ratio of output to input dimensions
+  # ks: 9 # for 1D Convolution
+
+# Training & Testing (set to 0 to use the default value)
+num_cycles: 0
+num_epoch_per_cycle: 0
+thresh: 0
+temp: 0
+acc_type: ova # avg
+
+# Experiment
+text_type: lb_MAad_MAmd_LLMad_LLMmd # MA/LLM: Manually-Annotated/LLM-generated, lb/ad/md: label/action-description/motion-description
+split_type: r # set to 'e/r/h' to use the easy/random/hard setting
+
+# Mode
+# mode: zsl # zsl, gzsl, gate
